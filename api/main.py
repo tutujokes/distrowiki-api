@@ -86,6 +86,7 @@ app.add_middleware(
     allow_origins=[
         "https://distrowiki.vercel.app",
         "https://distro-wiki-d3lcguywg-tutujokes-projects.vercel.app",
+        "https://distrowiki.site",
         "https://*.vercel.app",  # Permite todos os previews do Vercel
         "http://localhost:*",
         "http://127.0.0.1:*"
