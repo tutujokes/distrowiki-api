@@ -84,11 +84,11 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",  # Next.js dev
-        "http://localhost:8080",  # Vite dev
-        "http://localhost:8000",  # FastAPI dev
-        "https://distrowiki.vercel.app",  # Produção (ajuste com seu domínio)
-        "https://*.vercel.app",  # Todos os previews do Vercel
+        "https://distrowiki.vercel.app",
+        "https://distro-wiki-d3lcguywg-tutujokes-projects.vercel.app",
+        "https://*.vercel.app",  # Permite todos os previews do Vercel
+        "http://localhost:*",
+        "http://127.0.0.1:*"
     ],
     allow_credentials=True,
     allow_methods=["*"],
