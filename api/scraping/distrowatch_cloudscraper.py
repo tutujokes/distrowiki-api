@@ -49,7 +49,7 @@ class DistroWatchCloudScraper:
         """
         logger.info("🔍 Iniciando scraping da lista de distribuições...")
         
-        url = f"{self.base_url}/index.php?dataspan=1"
+        url = f"{self.base_url}/popularity"
         
         try:
             logger.info(f"📡 Acessando: {url}")
@@ -62,62 +62,59 @@ class DistroWatchCloudScraper:
             soup = BeautifulSoup(response.text, 'html.parser')
             distros = []
             
-            # Encontra tabela de ranking
-            # DistroWatch usa <table> com class específica
-            table = soup.find('table', class_='News')
+            # Na página /popularity, os rankings estão em uma tabela simples
+            # Busca todos os links de distros na página
+            links = soup.find_all('a', href=lambda x: x and 'table.php?distribution=' in x)
             
-            if not table:
-                logger.warning("⚠️ Tabela de distros não encontrada, tentando método alternativo...")
-                # Método alternativo: busca por links de distros
-                links = soup.find_all('a', href=lambda x: x and 'table.php?distribution=' in x)
+            if not links:
+                logger.warning("⚠️ Nenhum link de distro encontrado na página")
+                return []
+            
+            logger.info(f"📊 Encontrados {len(links)} links de distros")
+            
+            # Extrai dados de cada link
+            seen_distros = set()  # Para evitar duplicatas
+            
+            for link in links:
+                distro_name = link.get_text(strip=True)
+                distro_url = link.get('href')
                 
-                for i, link in enumerate(links[:100], 1):  # Limita a 100
-                    distro_name = link.get_text(strip=True)
-                    distro_url = link.get('href')
-                    
-                    if not distro_url.startswith('http'):
-                        distro_url = f"{self.base_url}/{distro_url}"
-                    
-                    distros.append({
-                        'rank': str(i),
-                        'name': distro_name,
-                        'url': distro_url
-                    })
+                # Evita duplicatas
+                if distro_name in seen_distros:
+                    continue
+                seen_distros.add(distro_name)
                 
-                logger.info(f"✅ Scraped {len(distros)} distros (método alternativo)")
-                return distros
-            
-            # Parse da tabela principal
-            rows = table.find_all('tr')
-            
-            for row in rows:
-                cols = row.find_all('td')
+                # Normaliza URL
+                if not distro_url.startswith('http'):
+                    distro_url = f"{self.base_url}/{distro_url}"
                 
-                if len(cols) >= 2:
-                    # Primeira coluna: rank
-                    rank_col = cols[0].get_text(strip=True)
-                    
-                    # Segunda coluna: nome e link
-                    link = cols[1].find('a', href=lambda x: x and 'table.php?distribution=' in x)
-                    
-                    if link:
-                        distro_name = link.get_text(strip=True)
-                        distro_url = link.get('href')
-                        
-                        if not distro_url.startswith('http'):
-                            distro_url = f"{self.base_url}/{distro_url}"
-                        
-                        distros.append({
-                            'rank': rank_col if rank_col.isdigit() else str(len(distros) + 1),
-                            'name': distro_name,
-                            'url': distro_url
-                        })
+                # Tenta extrair o rank do contexto (linha da tabela)
+                rank = None
+                parent_tr = link.find_parent('tr')
+                if parent_tr:
+                    # Primeira célula geralmente contém o rank
+                    first_td = parent_tr.find('td')
+                    if first_td:
+                        rank_text = first_td.get_text(strip=True)
+                        if rank_text.isdigit():
+                            rank = rank_text
+                
+                # Se não encontrou rank, usa posição na lista
+                if not rank:
+                    rank = str(len(distros) + 1)
+                
+                distros.append({
+                    'rank': rank,
+                    'name': distro_name,
+                    'url': distro_url
+                })
             
-            logger.info(f"✅ Scraped {len(distros)} distribuições")
+            logger.info(f"✅ Scraped {len(distros)} distribuições únicas")
             return distros
             
         except Exception as e:
             logger.error(f"❌ Erro ao fazer scraping da lista: {e}")
+            logger.info("💡 Dica: Se estiver rodando localmente e DistroWatch estiver bloqueado, use GitHub Actions")
             return []
     
     def scrape_distro_details(self, distro_url: str) -> Optional[Dict]:
