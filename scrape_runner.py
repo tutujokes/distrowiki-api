@@ -10,10 +10,18 @@ import logging
 from datetime import datetime
 from pathlib import Path
 
-# Adiciona path da API
-sys.path.insert(0, str(Path(__file__).parent / 'api'))
+# Adiciona path para importar diretamente o scraper
+sys.path.insert(0, str(Path(__file__).parent))
 
-from api.scraping.distrowatch_cloudscraper import DistroWatchCloudScraper
+# Importa diretamente o módulo do scraper sem passar pelo __init__.py
+import importlib.util
+spec = importlib.util.spec_from_file_location(
+    "distrowatch_cloudscraper",
+    Path(__file__).parent / "api" / "scraping" / "distrowatch_cloudscraper.py"
+)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+DistroWatchCloudScraper = module.DistroWatchCloudScraper
 
 # Configura logging
 logging.basicConfig(
