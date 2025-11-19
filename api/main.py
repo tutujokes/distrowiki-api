@@ -89,6 +89,7 @@ app.add_middleware(
         "https://distrowiki.site",
         "http://localhost:8080",
         "http://127.0.0.1:8080",
+        "https://*.lovable.app",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",  # Permite todos os previews e deployments do Vercel
     allow_credentials=True,
