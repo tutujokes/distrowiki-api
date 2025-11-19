@@ -88,7 +88,7 @@ app.add_middleware(
         "https://distrowiki.site",
         "https://www.distrowiki.site",
     ],
-    allow_origin_regex=r"^https://.*\.vercel\.app$|^http://(localhost|127\.0\.0\.1)(:\d+)?$",
+    allow_origin_regex=r"^https://.*\.(vercel\.app|lovable\.dev|lovableproject\.com|lovable\.app)$|^http://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization", "Accept"],
