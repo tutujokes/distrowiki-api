@@ -7,6 +7,8 @@ import logging
 import re
 import time
 import cloudscraper
+import requests
+import random
 from typing import List, Dict, Optional
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -25,15 +27,20 @@ class DistroWatchCloudScraper:
     - Rating (avaliação dos visitantes)
     """
     
-    def __init__(self, delay: int = 2):
+    def __init__(self, delay: int = 2, use_proxies: bool = True):
         """
         Inicializa o scraper.
         
         Args:
             delay: Delay entre requests em segundos (rate limiting)
+            use_proxies: Se deve usar proxies da lista pública
         """
         self.base_url = "https://distrowatch.com"
         self.delay = delay
+        self.use_proxies = use_proxies
+        self.working_proxies = []
+        self.current_proxy_index = 0
+        
         self.scraper = cloudscraper.create_scraper(
             browser={
                 'browser': 'chrome',
@@ -41,6 +48,10 @@ class DistroWatchCloudScraper:
                 'desktop': True
             }
         )
+        
+        # Carregar proxies se habilitado
+        if self.use_proxies:
+            self._load_proxies()
         
     def _extract_slug_from_url(self, url: str) -> str:
         """
@@ -56,6 +67,105 @@ class DistroWatchCloudScraper:
         if match:
             return match.group(1)
         return ""
+    
+    def _load_proxies(self):
+        """Carrega e valida proxies das listas públicas do GitHub."""
+        logger.info("🔄 Carregando proxies...")
+        
+        proxy_urls = [
+            "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt",
+            "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks4.txt",
+            "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt"
+        ]
+        
+        all_proxies = []
+        
+        for url in proxy_urls:
+            try:
+                response = requests.get(url, timeout=10)
+                if response.status_code == 200:
+                    proxies = response.text.strip().split('\n')
+                    proxy_type = 'socks5' if 'socks5' in url else ('socks4' if 'socks4' in url else 'http')
+                    
+                    for proxy in proxies[:50]:  # Limitar a 50 de cada tipo
+                        proxy = proxy.strip()
+                        if proxy and not proxy.startswith('#'):
+                            all_proxies.append({
+                                'type': proxy_type,
+                                'address': proxy
+                            })
+                    
+                    logger.info(f"✅ Carregados {len(proxies[:50])} proxies {proxy_type.upper()}")
+            except Exception as e:
+                logger.warning(f"⚠️ Erro ao carregar {url}: {e}")
+        
+        # Embaralhar para distribuir melhor
+        random.shuffle(all_proxies)
+        
+        # Guardar todos os proxies sem testar (teste será feito durante uso)
+        # Isso acelera a inicialização
+        self.working_proxies = all_proxies[:30]  # Usar os primeiros 30
+        
+        logger.info(f"✅ {len(self.working_proxies)} proxies carregados e prontos para uso")
+    
+    def _get_next_proxy(self) -> Optional[Dict]:
+        """
+        Retorna o próximo proxy da lista (rotação).
+        
+        Returns:
+            Dict com configuração do proxy ou None
+        """
+        if not self.working_proxies:
+            return None
+        
+        proxy_info = self.working_proxies[self.current_proxy_index]
+        self.current_proxy_index = (self.current_proxy_index + 1) % len(self.working_proxies)
+        
+        return {
+            'http': f"{proxy_info['type']}://{proxy_info['address']}",
+            'https': f"{proxy_info['type']}://{proxy_info['address']}"
+        }
+    
+    def _make_request(self, url: str, timeout: int = 15) -> requests.Response:
+        """
+        Faz uma requisição usando proxy rotativo ou direto.
+        
+        Args:
+            url: URL para acessar
+            timeout: Timeout em segundos
+        
+        Returns:
+            Response object
+        """
+        # Tentar com proxy se disponível
+        if self.use_proxies and self.working_proxies:
+            max_attempts = min(5, len(self.working_proxies))  # Tentar até 5 proxies
+            
+            for attempt in range(max_attempts):
+                try:
+                    proxies = self._get_next_proxy()
+                    response = self.scraper.get(url, timeout=timeout, proxies=proxies)
+                    response.raise_for_status()
+                    logger.debug(f"✅ Request com proxy bem-sucedido")
+                    return response
+                except requests.exceptions.HTTPError as e:
+                    if e.response.status_code == 403:
+                        logger.debug(f"⚠️ Proxy bloqueado (403), tentando outro...")
+                        continue
+                    raise
+                except Exception as e:
+                    logger.debug(f"⚠️ Proxy falhou (tentativa {attempt + 1}/{max_attempts}): {type(e).__name__}")
+                    continue
+        
+        # Fallback: tentar sem proxy
+        try:
+            response = self.scraper.get(url, timeout=timeout)
+            response.raise_for_status()
+            logger.debug(f"✅ Request sem proxy bem-sucedido")
+            return response
+        except Exception as e:
+            logger.error(f"❌ Todas as tentativas falharam: {e}")
+            raise
     
     def _get_fallback_distros(self, limit: int = 230) -> List[Dict]:
         """
@@ -218,8 +328,7 @@ class DistroWatchCloudScraper:
         
         try:
             logger.info(f"📡 Acessando: {url}")
-            response = self.scraper.get(url, timeout=30)
-            response.raise_for_status()
+            response = self._make_request(url, timeout=30)
             
             logger.info(f"✅ Status: {response.status_code}")
             
@@ -314,8 +423,7 @@ class DistroWatchCloudScraper:
         logger.info(f"📄 Scraping: {slug}")
         
         try:
-            response = self.scraper.get(url, timeout=30)
-            response.raise_for_status()
+            response = self._make_request(url, timeout=30)
             
             soup = BeautifulSoup(response.text, 'html.parser')
             
