@@ -45,14 +45,17 @@ except Exception as e:
     from fastapi.responses import JSONResponse
     import traceback
     
+    error_message = str(e)
+    error_traceback = traceback.format_exc()
+    
     app = FastAPI()
     
     @app.get("/")
     async def root():
         return {
             "error": "Falha ao importar aplicação principal",
-            "details": str(e),
-            "traceback": traceback.format_exc()
+            "details": error_message,
+            "traceback": error_traceback
         }
     
     @app.get("/api/distros")
@@ -61,7 +64,7 @@ except Exception as e:
             status_code=500,
             content={
                 "error": "API não está disponível - erro ao importar módulos",
-                "details": str(e)
+                "details": error_message
             }
         )
 
