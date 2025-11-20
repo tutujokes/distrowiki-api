@@ -98,7 +98,7 @@ app.add_middleware(
 # Registrar rotas
 app.include_router(distros_router)
 app.include_router(logo_router)
-app.include_router(scraping_router)  # Módulo de scraping (modular - pode ser removido facilmente)
+app.include_router(scraping_router)
 
 
 @app.get("/", tags=["Root"])
