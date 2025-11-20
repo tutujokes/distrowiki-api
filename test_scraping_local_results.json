@@ -1,0 +1,27 @@
+{
+  "scraped_at": "2025-11-20T03:32:02.864682Z",
+  "source": "local_html_files",
+  "total": 2,
+  "distros": [
+    {
+      "id": "cachyos",
+      "name": "CachyOS",
+      "category": "Desktop, Live Medium",
+      "release_date": "25/08/2025",
+      "popularity_rank": 1,
+      "popularity_hits": 4738,
+      "rating": 8.0,
+      "source_file": "url/DistroWatch.com_ CachyOS.html"
+    },
+    {
+      "id": "mx",
+      "name": "MX Linux",
+      "category": "Desktop, From RAM, Live Medium, Old Computers, Raspberry Pi",
+      "release_date": "09/11/2025",
+      "popularity_rank": 2,
+      "popularity_hits": 2711,
+      "rating": 8.0,
+      "source_file": "url/DistroWatch.com_ MX Linux.html"
+    }
+  ]
+}

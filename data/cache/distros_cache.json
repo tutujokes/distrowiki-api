@@ -1,7 +1,7 @@
 {
-  "timestamp": "2025-11-19T17:35:22.767845",
+  "timestamp": "2025-11-20T03:34:05.975266",
   "ttl_seconds": 86400,
-  "count": 83,
+  "count": 81,
   "distros": [
     {
       "id": "alma",
@@ -30,7 +30,7 @@
       "package_manager": "DNF/YUM",
       "summary": "Community-owned and governed RHEL fork for long-term stability",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762452"
+      "last_updated": "2025-11-20T03:34:05.964678"
     },
     {
       "id": "alpine",
@@ -52,12 +52,12 @@
       "logo_url": "https://distrosea.com/distro-icons/alpine.svg",
       "idle_ram_usage": null,
       "image_size": "130 MB",
-      "office_suite": "None (minimal)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "APK",
       "summary": "Security-oriented lightweight distribution based on musl libc and busybox",
       "latest_release_date": "2005-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762536"
+      "last_updated": "2025-11-20T03:34:05.964851"
     },
     {
       "id": "antix",
@@ -84,7 +84,7 @@
       "package_manager": "APT",
       "summary": "Fast live-capable systemd-free distribution for old computers",
       "latest_release_date": "2006-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762606"
+      "last_updated": "2025-11-20T03:34:05.964990"
     },
     {
       "id": "archlinux",
@@ -106,12 +106,12 @@
       "logo_url": "https://distrosea.com/distro-icons/archlinux.svg",
       "idle_ram_usage": null,
       "image_size": "2 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Pacman",
       "summary": "Lightweight and flexible rolling-release distribution",
       "latest_release_date": "2002-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762676"
+      "last_updated": "2025-11-20T03:34:05.965139"
     },
     {
       "id": "archcraft",
@@ -133,12 +133,12 @@
       "logo_url": "https://distrosea.com/distro-icons/archcraft.svg",
       "idle_ram_usage": null,
       "image_size": "2.5 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Pacman",
       "summary": "Minimalist Linux distribution focused on aesthetics and simplicity",
       "latest_release_date": "2020-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762747"
+      "last_updated": "2025-11-20T03:34:05.965277"
     },
     {
       "id": "arcolinux",
@@ -167,7 +167,7 @@
       "package_manager": "Pacman",
       "summary": "Arch-based distribution with extensive customization options",
       "latest_release_date": "2017-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762815"
+      "last_updated": "2025-11-20T03:34:05.965416"
     },
     {
       "id": "artixlinux",
@@ -189,12 +189,12 @@
       "logo_url": "https://distrosea.com/distro-icons/artixlinux.svg",
       "idle_ram_usage": null,
       "image_size": "2 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Pacman",
       "summary": "Rolling-release distribution based on Arch without systemd",
       "latest_release_date": "2017-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762881"
+      "last_updated": "2025-11-20T03:34:05.965569"
     },
     {
       "id": "biglinux",
@@ -223,7 +223,7 @@
       "package_manager": "Pacman",
       "summary": "Brazilian Manjaro-based distribution for ease of use",
       "latest_release_date": "2004-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.762952"
+      "last_updated": "2025-11-20T03:34:05.965717"
     },
     {
       "id": "blendos",
@@ -252,7 +252,7 @@
       "package_manager": "Pacman",
       "summary": "Immutable distribution with container-based app management",
       "latest_release_date": "2022-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763016"
+      "last_updated": "2025-11-20T03:34:05.965854"
     },
     {
       "id": "bodhi",
@@ -274,12 +274,12 @@
       "logo_url": "https://distrosea.com/distro-icons/bodhi.svg",
       "idle_ram_usage": null,
       "image_size": "1.2 GB",
-      "office_suite": "None (minimal)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "APT",
       "summary": "Lightweight distribution featuring the Moksha desktop",
       "latest_release_date": "2011-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763078"
+      "last_updated": "2025-11-20T03:34:05.966044"
     },
     {
       "id": "bunsenlabs",
@@ -301,12 +301,12 @@
       "logo_url": "https://distrosea.com/distro-icons/bunsenlabs.svg",
       "idle_ram_usage": null,
       "image_size": "1 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "APT",
       "summary": "Lightweight Debian-based distribution with Openbox",
       "latest_release_date": "2015-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763142"
+      "last_updated": "2025-11-20T03:34:05.966182"
     },
     {
       "id": "cachyos",
@@ -335,7 +335,7 @@
       "package_manager": "Pacman",
       "summary": "Performance-optimized Arch-based distribution",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763211"
+      "last_updated": "2025-11-20T03:34:05.966314"
     },
     {
       "id": "centos",
@@ -364,7 +364,7 @@
       "package_manager": "DNF",
       "summary": "Continuous delivery distribution positioned upstream of RHEL",
       "latest_release_date": "2004-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763273"
+      "last_updated": "2025-11-20T03:34:05.966447"
     },
     {
       "id": "chimeralinux",
@@ -388,12 +388,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "2 GB",
-      "office_suite": "None (minimal)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "APK",
       "summary": "Independent distribution using FreeBSD userland and Linux kernel",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763337"
+      "last_updated": "2025-11-20T03:34:05.966593"
     },
     {
       "id": "debian",
@@ -422,7 +422,7 @@
       "package_manager": "APT",
       "summary": "Universal operating system known for stability and package variety",
       "latest_release_date": "1993-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763405"
+      "last_updated": "2025-11-20T03:34:05.966739"
     },
     {
       "id": "deepin",
@@ -451,7 +451,7 @@
       "package_manager": "APT",
       "summary": "Beautiful Chinese distribution with custom desktop environment",
       "latest_release_date": "2004-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763467"
+      "last_updated": "2025-11-20T03:34:05.966867"
     },
     {
       "id": "devuan",
@@ -478,7 +478,7 @@
       "package_manager": "APT",
       "summary": "Debian fork without systemd",
       "latest_release_date": "2014-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763525"
+      "last_updated": "2025-11-20T03:34:05.966987"
     },
     {
       "id": "dragonflybsd",
@@ -500,12 +500,12 @@
       "logo_url": "https://distrosea.com/distro-icons/dragonflybsd.svg",
       "idle_ram_usage": null,
       "image_size": "2 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "pkg",
       "summary": "BSD operating system focused on performance and efficiency",
       "latest_release_date": "2003-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763598"
+      "last_updated": "2025-11-20T03:34:05.967121"
     },
     {
       "id": "edubuntu",
@@ -534,7 +534,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor designed for educational environments",
       "latest_release_date": "2005-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763663"
+      "last_updated": "2025-11-20T03:34:05.967242"
     },
     {
       "id": "elementary",
@@ -558,12 +558,12 @@
       "logo_url": "https://distrosea.com/distro-icons/elementary.svg",
       "idle_ram_usage": null,
       "image_size": "6 GB",
-      "office_suite": "None (AppCenter)",
+      "office_suite": "N/A",
       "price": "Free/PWYW",
       "package_manager": "APT",
       "summary": "Beautiful and user-friendly distribution inspired by macOS",
       "latest_release_date": "2011-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763731"
+      "last_updated": "2025-11-20T03:34:05.967373"
     },
     {
       "id": "endeavouros",
@@ -585,12 +585,12 @@
       "logo_url": "https://distrosea.com/distro-icons/endeavouros.svg",
       "idle_ram_usage": null,
       "image_size": "2 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Pacman",
       "summary": "User-friendly Arch-based distribution with easy installation",
       "latest_release_date": "2019-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763796"
+      "last_updated": "2025-11-20T03:34:05.967558"
     },
     {
       "id": "endless",
@@ -619,7 +619,7 @@
       "package_manager": "Flatpak",
       "summary": "Simplified distribution with offline-first approach",
       "latest_release_date": "2014-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763851"
+      "last_updated": "2025-11-20T03:34:05.967675"
     },
     {
       "id": "fedora",
@@ -648,7 +648,7 @@
       "package_manager": "DNF",
       "summary": "Cutting-edge distribution sponsored by Red Hat",
       "latest_release_date": "2003-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763914"
+      "last_updated": "2025-11-20T03:34:05.967800"
     },
     {
       "id": "freebsd",
@@ -675,7 +675,7 @@
       "package_manager": "pkg",
       "summary": "Advanced BSD operating system for servers and workstations",
       "latest_release_date": "1993-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.763979"
+      "last_updated": "2025-11-20T03:34:05.967937"
     },
     {
       "id": "garuda",
@@ -704,7 +704,7 @@
       "package_manager": "Pacman",
       "summary": "Performance-oriented Arch-based distribution with gaming focus",
       "latest_release_date": "2020-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764041"
+      "last_updated": "2025-11-20T03:34:05.968066"
     },
     {
       "id": "gentoo",
@@ -726,12 +726,12 @@
       "logo_url": "https://distrosea.com/distro-icons/gentoo.svg",
       "idle_ram_usage": null,
       "image_size": "Variable",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Portage",
       "summary": "Meta-distribution known for extreme customization and optimization",
       "latest_release_date": "2002-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764111"
+      "last_updated": "2025-11-20T03:34:05.968205"
     },
     {
       "id": "haiku",
@@ -753,12 +753,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "1 GB",
-      "office_suite": "None (minimal apps)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "pkgman",
       "summary": "Open-source reimplementation of BeOS",
       "latest_release_date": "2001-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764165"
+      "last_updated": "2025-11-20T03:34:05.968308"
     },
     {
       "id": "holoiso",
@@ -782,12 +782,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "8 GB",
-      "office_suite": "None (gaming focus)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Pacman",
       "summary": "SteamOS 3 (Steam Deck) rebuild for desktop PCs",
       "latest_release_date": "2022-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764320"
+      "last_updated": "2025-11-20T03:34:05.968421"
     },
     {
       "id": "kdeneon",
@@ -816,7 +816,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu-based distribution with latest KDE Plasma desktop",
       "latest_release_date": "2016-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764389"
+      "last_updated": "2025-11-20T03:34:05.968565"
     },
     {
       "id": "kolibrios",
@@ -838,12 +838,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "1.44 MB",
-      "office_suite": "None (basic apps)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "None",
       "summary": "Tiny operating system written entirely in assembly",
       "latest_release_date": "2004-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764454"
+      "last_updated": "2025-11-20T03:34:05.968681"
     },
     {
       "id": "kubuntu",
@@ -872,7 +872,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor with KDE Plasma desktop",
       "latest_release_date": "2005-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764514"
+      "last_updated": "2025-11-20T03:34:05.968810"
     },
     {
       "id": "linuxlite",
@@ -901,7 +901,7 @@
       "package_manager": "APT",
       "summary": "Lightweight distribution designed for Windows refugees",
       "latest_release_date": "2012-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764576"
+      "last_updated": "2025-11-20T03:34:05.968941"
     },
     {
       "id": "linuxmint",
@@ -930,7 +930,7 @@
       "package_manager": "APT",
       "summary": "User-friendly distribution based on Ubuntu with Cinnamon desktop",
       "latest_release_date": "2006-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764640"
+      "last_updated": "2025-11-20T03:34:05.969074"
     },
     {
       "id": "lmde",
@@ -959,7 +959,7 @@
       "package_manager": "APT",
       "summary": "Debian-based version of Linux Mint for maximum stability",
       "latest_release_date": "2010-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764702"
+      "last_updated": "2025-11-20T03:34:05.969205"
     },
     {
       "id": "lubuntu",
@@ -988,7 +988,7 @@
       "package_manager": "APT",
       "summary": "Lightweight Ubuntu flavor with LXQt desktop",
       "latest_release_date": "2008-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764891"
+      "last_updated": "2025-11-20T03:34:05.969329"
     },
     {
       "id": "mageia",
@@ -1017,7 +1017,7 @@
       "package_manager": "urpmi",
       "summary": "Community-driven fork of Mandriva Linux",
       "latest_release_date": "2010-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.764953"
+      "last_updated": "2025-11-20T03:34:05.969464"
     },
     {
       "id": "manjaro",
@@ -1046,7 +1046,7 @@
       "package_manager": "Pacman",
       "summary": "User-friendly Arch-based distribution",
       "latest_release_date": "2011-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765017"
+      "last_updated": "2025-11-20T03:34:05.969595"
     },
     {
       "id": "mxlinux",
@@ -1075,7 +1075,7 @@
       "package_manager": "APT",
       "summary": "Midweight distribution combining antiX and MEPIS",
       "latest_release_date": "2014-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765078"
+      "last_updated": "2025-11-20T03:34:05.969722"
     },
     {
       "id": "nitrux",
@@ -1104,7 +1104,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu-based distribution with NX Desktop and AppImages",
       "latest_release_date": "2016-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765132"
+      "last_updated": "2025-11-20T03:34:05.969831"
     },
     {
       "id": "nixos",
@@ -1126,12 +1126,12 @@
       "logo_url": "https://distrosea.com/distro-icons/nixos.svg",
       "idle_ram_usage": null,
       "image_size": "3 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "Nix",
       "summary": "Unique distribution with declarative configuration management",
       "latest_release_date": "2003-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765206"
+      "last_updated": "2025-11-20T03:34:05.969968"
     },
     {
       "id": "openindiana",
@@ -1160,7 +1160,7 @@
       "package_manager": "IPS",
       "summary": "Illumos-based distribution continuing OpenSolaris",
       "latest_release_date": "2010-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765285"
+      "last_updated": "2025-11-20T03:34:05.970103"
     },
     {
       "id": "opensuse",
@@ -1189,7 +1189,7 @@
       "package_manager": "Zypper",
       "summary": "Stable and professional distribution sponsored by SUSE",
       "latest_release_date": "1994-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765358"
+      "last_updated": "2025-11-20T03:34:05.970242"
     },
     {
       "id": "pclinuxos",
@@ -1218,7 +1218,7 @@
       "package_manager": "APT-RPM",
       "summary": "User-friendly rolling-release distribution",
       "latest_release_date": "2003-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765435"
+      "last_updated": "2025-11-20T03:34:05.970372"
     },
     {
       "id": "peppermint",
@@ -1247,7 +1247,7 @@
       "package_manager": "APT",
       "summary": "Lightweight cloud-focused distribution",
       "latest_release_date": "2010-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765488"
+      "last_updated": "2025-11-20T03:34:05.970506"
     },
     {
       "id": "popos",
@@ -1276,7 +1276,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu-based distribution by System76 for developers and creators",
       "latest_release_date": "2017-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765546"
+      "last_updated": "2025-11-20T03:34:05.970644"
     },
     {
       "id": "porteus",
@@ -1305,7 +1305,7 @@
       "package_manager": "slackpkg",
       "summary": "Fast portable distribution that runs from USB",
       "latest_release_date": "2010-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765600"
+      "last_updated": "2025-11-20T03:34:05.970762"
     },
     {
       "id": "primtux",
@@ -1334,7 +1334,7 @@
       "package_manager": "APT",
       "summary": "French educational distribution for primary schools",
       "latest_release_date": "2014-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765646"
+      "last_updated": "2025-11-20T03:34:05.970868"
     },
     {
       "id": "puppylinux",
@@ -1361,7 +1361,7 @@
       "package_manager": "Various",
       "summary": "Extremely lightweight distribution that runs entirely in RAM",
       "latest_release_date": "2003-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765697"
+      "last_updated": "2025-11-20T03:34:05.970986"
     },
     {
       "id": "pureos",
@@ -1390,7 +1390,7 @@
       "package_manager": "APT",
       "summary": "FSF-endorsed distribution focused on privacy and freedom",
       "latest_release_date": "2015-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765784"
+      "last_updated": "2025-11-20T03:34:05.971097"
     },
     {
       "id": "rebornos",
@@ -1417,7 +1417,7 @@
       "package_manager": "Pacman",
       "summary": "Easy-to-use Arch-based distribution with multiple desktops",
       "latest_release_date": "2018-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765835"
+      "last_updated": "2025-11-20T03:34:05.971218"
     },
     {
       "id": "rockylinux",
@@ -1446,7 +1446,7 @@
       "package_manager": "DNF",
       "summary": "Community enterprise operating system as CentOS replacement",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765888"
+      "last_updated": "2025-11-20T03:34:05.971334"
     },
     {
       "id": "siduction",
@@ -1475,7 +1475,7 @@
       "package_manager": "APT",
       "summary": "Desktop-oriented distribution based on Debian Sid",
       "latest_release_date": "2011-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765938"
+      "last_updated": "2025-11-20T03:34:05.971450"
     },
     {
       "id": "slackware",
@@ -1502,7 +1502,7 @@
       "package_manager": "slackpkg",
       "summary": "Oldest surviving Linux distribution emphasizing simplicity",
       "latest_release_date": "1993-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.765990"
+      "last_updated": "2025-11-20T03:34:05.971581"
     },
     {
       "id": "slax",
@@ -1524,12 +1524,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "280 MB",
-      "office_suite": "None (minimal)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "APT",
       "summary": "Portable modern and compact Linux distribution",
       "latest_release_date": "2002-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766039"
+      "last_updated": "2025-11-20T03:34:05.971694"
     },
     {
       "id": "slitaz",
@@ -1551,12 +1551,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "43 MB",
-      "office_suite": "None (minimal)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "tazpkg",
       "summary": "Extremely lightweight distribution under 50 MB",
       "latest_release_date": "2007-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766093"
+      "last_updated": "2025-11-20T03:34:05.971811"
     },
     {
       "id": "solus",
@@ -1585,7 +1585,7 @@
       "package_manager": "eopkg",
       "summary": "Independent distribution with Budgie desktop environment",
       "latest_release_date": "2012-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766143"
+      "last_updated": "2025-11-20T03:34:05.971925"
     },
     {
       "id": "sparkylinux",
@@ -1614,7 +1614,7 @@
       "package_manager": "APT",
       "summary": "Fast and lightweight Debian-based distribution",
       "latest_release_date": "2011-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766202"
+      "last_updated": "2025-11-20T03:34:05.972034"
     },
     {
       "id": "spirallinux",
@@ -1641,7 +1641,7 @@
       "package_manager": "APT",
       "summary": "Selection of Debian spins with different desktop environments",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766253"
+      "last_updated": "2025-11-20T03:34:05.972156"
     },
     {
       "id": "tails",
@@ -1670,7 +1670,7 @@
       "package_manager": "APT",
       "summary": "Privacy-focused live distribution for anonymity using Tor",
       "latest_release_date": "2009-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766309"
+      "last_updated": "2025-11-20T03:34:05.972276"
     },
     {
       "id": "tinycore",
@@ -1692,12 +1692,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "11-21 MB",
-      "office_suite": "None (extensions)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "tce-load",
       "summary": "Minimalistic distribution with modular design",
       "latest_release_date": "2009-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766364"
+      "last_updated": "2025-11-20T03:34:05.972393"
     },
     {
       "id": "trisquel",
@@ -1726,7 +1726,7 @@
       "package_manager": "APT",
       "summary": "Fully free distribution endorsed by FSF",
       "latest_release_date": "2004-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766415"
+      "last_updated": "2025-11-20T03:34:05.972518"
     },
     {
       "id": "tuxedoos",
@@ -1755,7 +1755,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu-based distribution optimized for TUXEDO computers",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766465"
+      "last_updated": "2025-11-20T03:34:05.972638"
     },
     {
       "id": "ubuntu",
@@ -1784,7 +1784,7 @@
       "package_manager": "APT",
       "summary": "Popular user-friendly distribution backed by Canonical",
       "latest_release_date": "2004-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766512"
+      "last_updated": "2025-11-20T03:34:05.972753"
     },
     {
       "id": "ubuntubudgie",
@@ -1813,7 +1813,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor with Budgie desktop environment",
       "latest_release_date": "2016-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766689"
+      "last_updated": "2025-11-20T03:34:05.972871"
     },
     {
       "id": "ubuntucinnamon",
@@ -1842,7 +1842,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor with Cinnamon desktop",
       "latest_release_date": "2020-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766746"
+      "last_updated": "2025-11-20T03:34:05.972986"
     },
     {
       "id": "ubuntukylin",
@@ -1869,7 +1869,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor tailored for Chinese users",
       "latest_release_date": "2013-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766796"
+      "last_updated": "2025-11-20T03:34:05.973094"
     },
     {
       "id": "ubuntumate",
@@ -1898,7 +1898,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor with MATE desktop environment",
       "latest_release_date": "2014-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766844"
+      "last_updated": "2025-11-20T03:34:05.973205"
     },
     {
       "id": "ubuntustudio",
@@ -1927,7 +1927,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor for multimedia production",
       "latest_release_date": "2007-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766894"
+      "last_updated": "2025-11-20T03:34:05.973323"
     },
     {
       "id": "ubuntuunity",
@@ -1954,7 +1954,7 @@
       "package_manager": "APT",
       "summary": "Ubuntu flavor bringing back Unity desktop",
       "latest_release_date": "2020-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.766955"
+      "last_updated": "2025-11-20T03:34:05.973435"
     },
     {
       "id": "void",
@@ -1976,12 +1976,12 @@
       "logo_url": null,
       "idle_ram_usage": null,
       "image_size": "1 GB",
-      "office_suite": "None (user choice)",
+      "office_suite": "N/A",
       "price": "Free",
       "package_manager": "XBPS",
       "summary": "Independent rolling-release distribution with runit init",
       "latest_release_date": "2008-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.767012"
+      "last_updated": "2025-11-20T03:34:05.973563"
     },
     {
       "id": "xubuntu",
@@ -2010,7 +2010,7 @@
       "package_manager": "APT",
       "summary": "Lightweight Ubuntu flavor with Xfce desktop",
       "latest_release_date": "2006-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.767059"
+      "last_updated": "2025-11-20T03:34:05.973671"
     },
     {
       "id": "zorin",
@@ -2037,12 +2037,12 @@
       "package_manager": "APT",
       "summary": "Elegant Ubuntu-based distribution designed for Windows users",
       "latest_release_date": "2008-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.767111"
+      "last_updated": "2025-11-20T03:34:05.973786"
     },
     {
-      "id": "zorin",
+      "id": "bros",
       "name": "Br OS",
-      "description": null,
+      "description": "Distribuição Linux brasileira baseada em Kubuntu, intuitiva e fácil de usar, voltada para uso geral e criação de conteúdo",
       "os_type": "Linux",
       "based_on": "Ubuntu",
       "family": "ubuntu",
@@ -2052,291 +2052,249 @@
       "desktop_environments": [
         "kde"
       ],
-      "category": "Desktop",
+      "category": "Desktop/General",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": "https://zorin.com",
+      "homepage": "https://br-os.com",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": "3 GB",
+      "image_size": "3.9 GB",
       "office_suite": "LibreOffice",
-      "price": "Free/Paid",
+      "price": "Free",
       "package_manager": "APT",
-      "summary": null,
-      "latest_release_date": "2008-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.767152"
-    },
-    {
-      "id": "kurumin-os",
-      "name": "Kurumin OS",
-      "description": null,
-      "os_type": "Linux",
-      "based_on": "Debian",
-      "family": "debian",
-      "origin": "Brazil",
-      "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": "Desktop",
-      "status": "Active",
-      "ranking": null,
-      "rating": null,
-      "homepage": null,
-      "logo": null,
-      "logo_url": null,
-      "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
-      "package_manager": null,
-      "summary": null,
+      "summary": "Distribuição Linux brasileira baseada em Kubuntu, intuitiva e fácil de usar, voltada para uso geral e criação de conteúdo",
       "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767357"
+      "last_updated": "2025-11-20T03:34:05.973930"
     },
     {
       "id": "regataos",
       "name": "Regata OS",
-      "description": null,
+      "description": "Distribuição brasileira baseada no openSUSE, otimizada para jogos com suporte a Steam, Proton e Lutris",
       "os_type": "Linux",
       "based_on": "Ubuntu",
       "family": "ubuntu",
       "origin": "Brazil",
       "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
+      "desktop": "KDE Plasma",
+      "desktop_environments": [
+        "kde"
+      ],
       "category": "Desktop/Gaming",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://www.regataos.com.br",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
+      "image_size": "~3-4 GB",
       "office_suite": "OnlyOffice",
       "price": "Free",
-      "package_manager": "APK",
-      "summary": null,
+      "package_manager": "Zypper",
+      "summary": "Distribuição brasileira baseada no openSUSE, otimizada para jogos com suporte a Steam, Proton e Lutris",
       "latest_release_date": "2021-01-01T00:00:00",
-      "last_updated": "2025-11-19T17:35:22.767405"
+      "last_updated": "2025-11-20T03:34:05.974065"
     },
     {
       "id": "tigeros",
       "name": "Tiger OS",
-      "description": null,
+      "description": "Sistema operacional brasileiro voltado para empresas, leve e estável, com interface winlike para facilitar migração do Windows",
       "os_type": "Linux",
       "based_on": "Ubuntu",
       "family": "ubuntu",
       "origin": "Brazil",
       "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": null,
+      "desktop": "KDE Plasma",
+      "desktop_environments": [
+        "kde"
+      ],
+      "category": "Business/Desktop",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://tigeros.com.br",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
-      "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767436"
+      "image_size": "~2.5-3 GB",
+      "office_suite": "LibreOffice",
+      "price": "Free",
+      "package_manager": "APT",
+      "summary": "Sistema operacional brasileiro voltado para empresas, leve e estável, com interface winlike para facilitar migração do Windows",
+      "latest_release_date": "2020-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.974203"
     },
     {
       "id": "locos",
       "name": "LocOS",
-      "description": null,
+      "description": "Distribuição focada em baixo consumo de recursos, sem systemd, capaz de rodar em computadores antigos",
       "os_type": "Linux",
       "based_on": "Debian",
       "family": "debian",
       "origin": "Argentina",
       "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": null,
+      "desktop": "LXDE",
+      "desktop_environments": [
+        "lxde"
+      ],
+      "category": "Lightweight/Desktop",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://loc-os.com",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
-      "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767467"
+      "image_size": "~1-1.5 GB",
+      "office_suite": "LibreOffice",
+      "price": "Free",
+      "package_manager": "APT",
+      "summary": "Distribuição focada em baixo consumo de recursos, sem systemd, capaz de rodar em computadores antigos",
+      "latest_release_date": "2022-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.974332"
     },
     {
-      "id": "canaima-gnu-linux",
+      "id": "canaima",
       "name": "Canaima GNU/Linux",
-      "description": null,
+      "description": "Distribuição oficial do governo venezuelano, sistema completo com suporte comunitário e governamental",
       "os_type": "Linux",
       "based_on": "Debian",
       "family": "debian",
       "origin": "Venezuela",
       "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": null,
+      "desktop": "GNOME",
+      "desktop_environments": [
+        "gnome"
+      ],
+      "category": "Government/Desktop",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://canaima.softwarelibre.gob.ve/",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
-      "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767503"
-    },
-    {
-      "id": "musix",
-      "name": "Musix GNU+Linux",
-      "description": null,
-      "os_type": "Linux",
-      "based_on": "Debian",
-      "family": "debian",
-      "origin": "Argentina",
-      "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": null,
-      "status": "Active",
-      "ranking": null,
-      "rating": null,
-      "homepage": null,
-      "logo": null,
-      "logo_url": null,
-      "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
-      "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767536"
+      "image_size": "~2-3 GB",
+      "office_suite": "OnlyOffice",
+      "price": "Free",
+      "package_manager": "APT",
+      "summary": "Distribuição oficial do governo venezuelano, sistema completo com suporte comunitário e governamental",
+      "latest_release_date": "2007-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.974479"
     },
     {
       "id": "ghostbsd",
       "name": "GhostBSD",
-      "description": null,
+      "description": "Sistema operacional baseado no FreeBSD com ambiente desktop pré-configurado, facilita uso do FreeBSD para usuários Linux",
       "os_type": "BSD",
       "based_on": "FreeBSD",
       "family": "independent",
       "origin": "Canada",
       "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": null,
+      "desktop": "MATE/Xfce",
+      "desktop_environments": [
+        "xfce"
+      ],
+      "category": "Desktop",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://www.ghostbsd.org",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
-      "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767567"
+      "image_size": "~2-3 GB",
+      "office_suite": "LibreOffice",
+      "price": "Free",
+      "package_manager": "pkg",
+      "summary": "Sistema operacional baseado no FreeBSD com ambiente desktop pré-configurado, facilita uso do FreeBSD para usuários Linux",
+      "latest_release_date": "2009-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.974625"
     },
     {
       "id": "midnightbsd",
       "name": "MidnightBSD",
-      "description": null,
+      "description": "Sistema derivado do FreeBSD focado em facilidade de uso desktop com gerenciamento gráfico de ports",
       "os_type": "BSD",
       "based_on": "FreeBSD",
       "family": "independent",
       "origin": "USA",
       "architecture": null,
-      "desktop": null,
-      "desktop_environments": [],
-      "category": null,
+      "desktop": "Xfce",
+      "desktop_environments": [
+        "xfce"
+      ],
+      "category": "Desktop",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "www.midnightbsd.org",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
+      "image_size": "~2-3 GB",
+      "office_suite": "N/A",
+      "price": "Free",
       "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767600"
+      "summary": "Sistema derivado do FreeBSD focado em facilidade de uso desktop com gerenciamento gráfico de ports",
+      "latest_release_date": "2006-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.974753"
     },
     {
       "id": "netbsd",
       "name": "NetBSD",
-      "description": null,
+      "description": "Sistema operacional Unix-like livre e altamente portável, suporta mais de 50 plataformas de hardware diferentes",
       "os_type": "BSD",
       "based_on": "Independent",
       "family": "independent",
       "origin": "USA",
       "architecture": null,
-      "desktop": null,
+      "desktop": "Multiple",
       "desktop_environments": [],
-      "category": null,
+      "category": "Server/Embedded",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://www.netbsd.org",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
+      "image_size": "~500 MB - 2 GB",
+      "office_suite": "N/A",
+      "price": "Free",
       "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767632"
+      "summary": "Sistema operacional Unix-like livre e altamente portável, suporta mais de 50 plataformas de hardware diferentes",
+      "latest_release_date": "1993-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.974884"
     },
     {
       "id": "openbsd",
       "name": "OpenBSD",
-      "description": null,
+      "description": "Sistema operacional focado em segurança, correção e criptografia integrada, com atualizações a cada 6 meses",
       "os_type": "BSD",
       "based_on": "Independent",
       "family": "independent",
       "origin": "Canada",
       "architecture": null,
-      "desktop": null,
+      "desktop": "X11/Multiple",
       "desktop_environments": [],
-      "category": null,
+      "category": "Security/Server",
       "status": "Active",
       "ranking": null,
       "rating": null,
-      "homepage": null,
+      "homepage": "https://www.openbsd.org",
       "logo": null,
       "logo_url": null,
       "idle_ram_usage": null,
-      "image_size": null,
-      "office_suite": null,
-      "price": null,
+      "image_size": "~500 MB - 2 GB",
+      "office_suite": "N/A",
+      "price": "Free",
       "package_manager": null,
-      "summary": null,
-      "latest_release_date": null,
-      "last_updated": "2025-11-19T17:35:22.767665"
+      "summary": "Sistema operacional focado em segurança, correção e criptografia integrada, com atualizações a cada 6 meses",
+      "latest_release_date": "1995-01-01T00:00:00",
+      "last_updated": "2025-11-20T03:34:05.975025"
     }
   ]
 }
