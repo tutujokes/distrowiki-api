@@ -12,7 +12,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from .routes import distros_router, logo_router
-from .scraping import scraping_router
 
 # Configurar logging
 logging.basicConfig(
@@ -98,7 +97,6 @@ app.add_middleware(
 # Registrar rotas
 app.include_router(distros_router)
 app.include_router(logo_router)
-app.include_router(scraping_router)
 
 
 @app.get("/", tags=["Root"])
