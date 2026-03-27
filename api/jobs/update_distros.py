@@ -14,7 +14,7 @@ from pathlib import Path
 # Adicionar diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from api.services.release_scraper import DistroWatchService
+from api.services.distrowatch_scraper import fetch_ranking_list, get_distro_details
 from api.cache.cache_manager import get_cache_manager
 from api.models.distro import DistroMetadata
 
@@ -40,13 +40,13 @@ async def fetch_and_update_distros():
     logger.info(f"⏰ Timestamp: {start_time.isoformat()}")
     logger.info("=" * 60)
     
-    distrowatch_service = DistroWatchService()
+    distrowatch_service = None  # Não mais necessário como classe
     cache_manager = get_cache_manager()
     
     try:
         # 1. Buscar ranking do DistroWatch
         logger.info("📥 Buscando ranking do DistroWatch (Last 1 month)...")
-        ranking = await distrowatch_service.fetch_ranking_list()
+        ranking = await fetch_ranking_list()
         logger.info(f"✅ {len(ranking)} distribuições encontradas no ranking")
         
         # 2. Scraping completo de cada distribuição
@@ -60,7 +60,24 @@ async def fetch_and_update_distros():
                 rank = item['rank']
                 logger.info(f"  [{i}/{len(ranking)}] #{rank} {slug}...")
                 
-                distro = await distrowatch_service.fetch_distro_by_slug(slug)
+                # Buscar dados da distro (Scrapling com fallback legado)
+                scraped_data = await get_distro_details(slug)
+                
+                if scraped_data:
+                    # Converter retorno do scraper para DistroMetadata
+                    # (Estamos mantendo a estrutura compatível)
+                    distro = DistroMetadata(
+                        id=slug,
+                        name=scraped_data.get("nome", slug), # Fallback se não vier nome
+                        description=scraped_data.get("descricao", ""),
+                        architecture=scraped_data.get("architecture"),
+                        popularity_rank=scraped_data.get("popularity_rank"),
+                        release_type=scraped_data.get("release_type"),
+                        init_system=scraped_data.get("init_system"),
+                        file_systems=scraped_data.get("file_systems"),
+                        latest_release_date=scraped_data.get("latest_release"),
+                        ranking=rank
+                    )
                 
                 if distro:
                     # Garantir que o ranking esteja atualizado
@@ -135,7 +152,7 @@ async def fetch_and_update_distros():
         raise
         
     finally:
-        await distrowatch_service.close()
+        # await distrowatch_service.close() # Facade gerencia o tempo de vida
 
 
 async def main():

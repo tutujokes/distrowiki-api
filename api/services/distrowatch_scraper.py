@@ -38,6 +38,12 @@ from .id_mapping import get_distrowatch_id
 
 logger = logging.getLogger(__name__)
 
+# Importar o novo cliente Scrapling
+from .scrapling_distrowatch_service import ScraplingDistroWatchClient
+
+# Instância única para reuso
+scrapling_client = ScraplingDistroWatchClient()
+
 
 class DistroWatchScraper:
     """Scraper para coletar dados adicionais do DistroWatch."""
@@ -482,18 +488,50 @@ class DistroWatchScraper:
             self.client = None
 
 
-# Função auxiliar para uso direto
-async def scrape_distrowatch_data(distro_ids: List[str]) -> List[Dict[str, Any]]:
+
+# ====== FACADE PARA INTEGRAÇÃO COM SCRAPLING ======
+
+async def get_distro_details(distro_slug: str) -> Dict[str, Any]:
     """
-    Função helper para scraping de distros.
-    
-    Usage:
-        from api.services.distrowatch_scraper import scrape_distrowatch_data
-        
-        results = await scrape_distrowatch_data(["ubuntu", "manjaro", "fedora"])
+    Função principal para obter metadados de uma distribuição.
+    Tenta via Scrapling primeiro e cai para o scraper legado em caso de erro.
     """
-    scraper = DistroWatchScraper()
     try:
-        return await scraper.scrape_multiple(distro_ids)
-    finally:
-        await scraper.close()
+        data = await scrapling_client.fetch_distro_details(distro_slug)
+        if data:
+            return data
+        raise Exception("Scrapling retornou dados vazios")
+    except Exception as e:
+        logger.warning(f"⚠️  Scrapling falhou para '{distro_slug}', usando fallback legado: {e}")
+        scraper = DistroWatchScraper()
+        try:
+            return await scraper.scrape_distro(distro_slug)
+        finally:
+            await scraper.close()
+
+async def get_all_distros(slugs: List[str]) -> List[Dict[str, Any]]:
+    """
+    Busca metadados para uma lista de distribuições com fallback.
+    """
+    results = []
+    for slug in slugs:
+        result = await get_distro_details(slug)
+        results.append(result)
+        # Delay básico de segurança entre as chamadas no facade
+        await asyncio.sleep(1.0)
+    return results
+
+async def fetch_ranking_list() -> List[Dict[str, Any]]:
+    """
+    Busca o ranking do DistroWatch via Scrapling.
+    """
+    try:
+        return await scrapling_client.fetch_ranking_list()
+    except Exception as e:
+        logger.error(f"❌ Falha ao buscar ranking via Scrapling: {e}")
+        return []
+
+# Funções auxiliares mantidas para retrocompatibilidade
+async def scrape_distrowatch_data(distro_ids: List[str]) -> List[Dict[str, Any]]:
+    """Helper legado: agora delega para get_all_distros."""
+    return await get_all_distros(distro_ids)
