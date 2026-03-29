@@ -38,11 +38,15 @@ from .id_mapping import get_distrowatch_id
 
 logger = logging.getLogger(__name__)
 
-# Importar o novo cliente Scrapling
-from .scrapling_distrowatch_service import ScraplingDistroWatchClient
-
-# Instância única para reuso
-scrapling_client = ScraplingDistroWatchClient()
+# Importar o novo cliente Scrapling (opcional)
+try:
+    from .scrapling_distrowatch_service import ScraplingDistroWatchClient
+    scrapling_client = ScraplingDistroWatchClient()
+    SCRAPLING_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"Scrapling não disponível, usando apenas scraper legado: {e}")
+    scrapling_client = None
+    SCRAPLING_AVAILABLE = False
 
 
 class DistroWatchScraper:
@@ -496,18 +500,21 @@ async def get_distro_details(distro_slug: str) -> Dict[str, Any]:
     Função principal para obter metadados de uma distribuição.
     Tenta via Scrapling primeiro e cai para o scraper legado em caso de erro.
     """
-    try:
-        data = await scrapling_client.fetch_distro_details(distro_slug)
-        if data:
-            return data
-        raise Exception("Scrapling retornou dados vazios")
-    except Exception as e:
-        logger.warning(f"⚠️  Scrapling falhou para '{distro_slug}', usando fallback legado: {e}")
-        scraper = DistroWatchScraper()
+    if SCRAPLING_AVAILABLE and scrapling_client:
         try:
-            return await scraper.scrape_distro(distro_slug)
-        finally:
-            await scraper.close()
+            data = await scrapling_client.fetch_distro_details(distro_slug)
+            if data:
+                return data
+            raise Exception("Scrapling retornou dados vazios")
+        except Exception as e:
+            logger.warning(f"⚠️  Scrapling falhou para '{distro_slug}', usando fallback legado: {e}")
+    
+    # Fallback para scraper legado
+    scraper = DistroWatchScraper()
+    try:
+        return await scraper.scrape_distro(distro_slug)
+    finally:
+        await scraper.close()
 
 async def get_all_distros(slugs: List[str]) -> List[Dict[str, Any]]:
     """
@@ -525,6 +532,9 @@ async def fetch_ranking_list() -> List[Dict[str, Any]]:
     """
     Busca o ranking do DistroWatch via Scrapling.
     """
+    if not SCRAPLING_AVAILABLE or not scrapling_client:
+        logger.warning("⚠️ Scrapling não disponível para buscar ranking")
+        return []
     try:
         return await scrapling_client.fetch_ranking_list()
     except Exception as e:
