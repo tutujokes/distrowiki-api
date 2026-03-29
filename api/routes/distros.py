@@ -104,7 +104,13 @@ async def get_distro_by_id(
     - **force_refresh**: Se true, ignora cache
     """
     try:
-        # Verificar cache
+        # Tentar lookup direto por ID (O(1) no Redis)
+        if not force_refresh:
+            distro = cache_manager.get_distro_by_id(distro_id)
+            if distro:
+                return distro
+        
+        # Fallback: carregar todos e salvar no cache
         cached_data = None if force_refresh else cache_manager.get_distros_cache()
         
         if cached_data:
@@ -172,4 +178,57 @@ async def refresh_distros_cache(
 
     except Exception as e:
         logger.error(f"Erro ao remover cache: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/distros/trending", summary="Distros em alta")
+async def get_trending_distros(
+    cache_manager: CacheManager = Depends(get_cache_manager),
+):
+    """
+    Retorna distros em alta: top 10 por ranking + releases recentes (últimos 60 dias).
+    
+    Ideal para seções dinâmicas de 'Em Alta' no frontend.
+    """
+    try:
+        distros = cache_manager.get_distros_cache()
+        
+        if not distros:
+            sheets_service = GoogleSheetsService()
+            distros = await sheets_service.fetch_all_distros()
+            await sheets_service.close()
+            cache_manager.save_distros_cache(distros)
+        
+        # Top 10 por ranking de popularidade
+        ranked = [d for d in distros if d.ranking and d.ranking > 0]
+        ranked.sort(key=lambda x: x.ranking or 999)
+        top_popular = ranked[:10]
+        
+        # Releases recentes (últimos 60 dias)
+        now = datetime.utcnow()
+        recent_releases = []
+        for d in distros:
+            if d.latest_release_date:
+                try:
+                    release_date = datetime.fromisoformat(
+                        d.latest_release_date.replace("Z", "+00:00").replace("+00:00", "")
+                    )
+                    days_ago = (now - release_date).days
+                    if 0 <= days_ago <= 60:
+                        recent_releases.append(d)
+                except (ValueError, TypeError):
+                    pass
+        
+        recent_releases.sort(
+            key=lambda x: x.latest_release_date or "", reverse=True
+        )
+        
+        return {
+            "popular": [d.dict() for d in top_popular],
+            "recent_releases": [d.dict() for d in recent_releases[:10]],
+            "total_distros": len(distros),
+        }
+        
+    except Exception as e:
+        logger.error(f"Erro ao buscar trending: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))

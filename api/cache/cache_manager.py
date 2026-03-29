@@ -51,6 +51,26 @@ class CacheManager:
             logger.error(f"Erro ao ler cache ({self.cache_type}): {e}")
             return None
 
+    def get_distro_by_id(self, distro_id: str) -> Optional[DistroMetadata]:
+        """Recupera uma única distro do cache por ID, sem carregar tudo."""
+        try:
+            # Redis: tenta buscar do hash individual primeiro
+            if self.cache_type == "redis" and self.redis_client:
+                data = self.redis_client.get(f"distro:{distro_id}")
+                if data:
+                    if isinstance(data, str):
+                        return DistroMetadata(**json.loads(data))
+                    return DistroMetadata(**data)
+            
+            # Fallback: carrega tudo e filtra
+            all_distros = self.get_distros_cache()
+            if all_distros:
+                return next((d for d in all_distros if d.id == distro_id), None)
+            return None
+        except Exception as e:
+            logger.error(f"Erro ao buscar distro {distro_id} do cache: {e}")
+            return None
+
     def save_distros_cache(self, distros: List[DistroMetadata]):
         """Salva distros no cache."""
         try:
@@ -58,6 +78,16 @@ class CacheManager:
             
             if self.cache_type == "redis" and self.redis_client:
                 self._save_to_redis(data)
+                # Também salva índice individual por ID para lookups rápidos
+                for d in distros:
+                    try:
+                        self.redis_client.set(
+                            f"distro:{d.id}",
+                            json.dumps(d.dict()),
+                            ex=self.ttl
+                        )
+                    except Exception:
+                        pass  # Não falhar por causa do índice
             else:
                 self._save_to_file(data)
                 

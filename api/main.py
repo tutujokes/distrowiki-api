@@ -10,6 +10,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.middleware.gzip import GZipMiddleware
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -96,6 +97,9 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization", "Accept"],
 )
+
+# Compressão GZip para respostas > 500 bytes
+app.add_middleware(GZipMiddleware, minimum_size=500)
 
 # Registrar rotas
 app.include_router(distros_router)
