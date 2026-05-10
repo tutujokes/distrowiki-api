@@ -16,10 +16,15 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-# Dependência para CacheManager
+# Singleton CacheManager
+_cache_manager_instance: CacheManager = None
+
 def get_cache_manager() -> CacheManager:
-    """Retorna instância do CacheManager."""
-    return CacheManager()
+    """Retorna instância singleton do CacheManager."""
+    global _cache_manager_instance
+    if _cache_manager_instance is None:
+        _cache_manager_instance = CacheManager()
+    return _cache_manager_instance
 
 
 @router.get("/distros", response_model=DistroListResponse)
@@ -210,9 +215,8 @@ async def get_trending_distros(
         for d in distros:
             if d.latest_release_date:
                 try:
-                    release_date = datetime.fromisoformat(
-                        d.latest_release_date.replace("Z", "+00:00").replace("+00:00", "")
-                    )
+                    # Formato DD/MM/AAAA vindo do Google Sheets
+                    release_date = datetime.strptime(d.latest_release_date, "%d/%m/%Y")
                     days_ago = (now - release_date).days
                     if 0 <= days_ago <= 60:
                         recent_releases.append(d)

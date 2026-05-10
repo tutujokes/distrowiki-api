@@ -238,8 +238,26 @@ class DistroWatchScraper:
                         html = await page.content()
                         await context.close()
                         return html
-                    elif response and response.status == 403:
-                        logger.warning(f"Status 403 para {distrowatch_id} (tentativa {attempt}/{max_retries})")
+                        
+                    elif response and response.status in [403, 503]:
+                        title = await page.title()
+                        logger.info(f"Desafio Cloudflare (ou bloqueio) detectado para {distrowatch_id}. Status: {response.status}, Title: '{title}'. Aguardando resolução...")
+                        try:
+                            # Esperar Cloudflare resolver e carregar a tag h1 da distro
+                            await page.wait_for_selector('h1', timeout=25000)
+                            logger.info(f"Cloudflare resolvido para {distrowatch_id}!")
+                            
+                            # Scroll suave após resolver
+                            await page.evaluate('window.scrollBy(0, 300)')
+                            await page.wait_for_timeout(random.randint(500, 1000))
+                            
+                            html = await page.content()
+                            await context.close()
+                            return html
+                        except Exception as e:
+                            logger.error(f"Cloudflare não resolveu a tempo para {distrowatch_id}.")
+                        
+                        logger.warning(f"Status {response.status} definitivo para {distrowatch_id} (tentativa {attempt}/{max_retries})")
                         await context.close()
                         
                         if attempt < max_retries:

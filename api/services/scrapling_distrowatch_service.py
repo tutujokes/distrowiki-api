@@ -23,15 +23,16 @@ class ScraplingDistroWatchClient:
         self.timeout = timeout
 
     async def _fetch_page(self, path: str) -> Optional[Any]:
-        """Busca uma página usando StealthyFetcher (Firefox spoofing)."""
+        """Busca uma página usando StealthyFetcher (Firefox spoofing) e bypassa Cloudflare."""
         url = f"{self.BASE_URL}/{path.lstrip('/')}"
         try:
-            page = await StealthyFetcher.async_fetch(url, timeout=self.timeout)
+            # Adiciona wait_selector para garantir que passou o desafio do Cloudflare
+            # O 403 inicial do Cloudflare será ignorado se o h1 carregar depois
+            page = await StealthyFetcher.async_fetch(url, timeout=self.timeout, wait_selector="h1")
             
-            # Scrapling Adaptor/Response doesn't always have status_code, checking status first
-            status = getattr(page, 'status', getattr(page, 'status_code', 200))
-            if status != 200:
-                logger.warning(f"⚠️ Falha ao buscar {url}: Status {status}")
+            # Se não tiver o elemento básico de uma página do DistroWatch, falhou
+            if not page.css("h1"):
+                logger.warning(f"⚠️ Falha ao buscar {url}: Elementos não carregaram (possível bloqueio Cloudflare)")
                 return None
             
             return page

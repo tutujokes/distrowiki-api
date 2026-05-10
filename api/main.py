@@ -5,6 +5,7 @@ API para catálogo de distribuições Linux, conforme especificação do Módulo
 Fornece endpoints para listagem, filtros e comparação de distros.
 """
 
+import os
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -154,9 +155,10 @@ async def global_exception_handler(request, exc):
     import traceback
     logger.error(f"Erro não tratado: {exc}", exc_info=True)
     
-    # Em desenvolvimento, mostrar stack trace
-    error_detail = str(exc)
-    if hasattr(exc, '__traceback__'):
+    # Apenas em desenvolvimento (DEBUG=true)
+    is_debug = os.getenv("DEBUG", "false").lower() in ("true", "1", "yes")
+    error_detail = None
+    if is_debug and hasattr(exc, '__traceback__'):
         error_detail = ''.join(traceback.format_exception(type(exc), exc, exc.__traceback__))
     
     return JSONResponse(
@@ -164,8 +166,8 @@ async def global_exception_handler(request, exc):
         content={
             "detail": "Erro interno do servidor",
             "type": type(exc).__name__,
-            "message": str(exc),
-            "traceback": error_detail if True else None  # Mostrar traceback temporariamente
+            "message": str(exc) if is_debug else "Erro interno do servidor",
+            "traceback": error_detail
         }
     )
 

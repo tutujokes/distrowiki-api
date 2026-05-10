@@ -54,15 +54,15 @@ async def scrape_all_distros(distro_ids: list, limit: int = None) -> list:
     
     logger.info(f"Iniciando scraping de {len(distro_ids)} distros...")
     
-    scraper = DistroWatchScraper()
     results = []
     
     try:
+        from api.services.distrowatch_scraper import get_distro_details
         for i, distro_id in enumerate(distro_ids):
             logger.info(f"[{i+1}/{len(distro_ids)}] Scraping: {distro_id}")
             
             try:
-                result = await scraper.scrape_distro(distro_id)
+                result = await get_distro_details(distro_id)
                 results.append({
                     "distro_id": distro_id,
                     **result
@@ -81,9 +81,8 @@ async def scrape_all_distros(distro_ids: list, limit: int = None) -> list:
                     "distro_id": distro_id,
                     "error": str(e)
                 })
-                
-    finally:
-        await scraper.close()
+    except Exception as e:
+        logger.error(f"Erro fatal no loop de scraping: {e}")
     
     return results
 

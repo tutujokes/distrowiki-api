@@ -9,6 +9,7 @@ import httpx
 import os
 import json
 from ..models.distro import DistroMetadata, DistroFamily, DesktopEnvironment
+from ..services.static_performance_data import get_or_calculate_performance
 
 logger = logging.getLogger(__name__)
 
@@ -243,6 +244,23 @@ class GoogleSheetsService:
                 file_systems = [f.strip() for f in fs_str.split(",") if f.strip()]
             # ====== FIM NOVOS CAMPOS ======
 
+            # Performance: dados curados/proxy TÊM PRIORIDADE sobre a planilha
+            # (a planilha pode conter scores antigos inflados gerados por LLM)
+            desktop_str_list = [de.value if hasattr(de, 'value') else str(de) for de in desktop_environments]
+            family_str = family.value if hasattr(family, 'value') else str(family)
+            perf = get_or_calculate_performance(
+                distro_id=distro_id,
+                desktop_environments=desktop_str_list,
+                family=family_str,
+                release_type=release_type,
+                init_system=init_system,
+                file_systems=file_systems,
+            )
+            # Curado/proxy sempre sobrescreve; planilha só se não houver nem curado nem proxy
+            idle_ram = perf.get("idle_ram_usage") or idle_ram
+            cpu_score = perf.get("cpu_score") or cpu_score
+            io_score = perf.get("io_score") or io_score
+
             return DistroMetadata(
                 id=distro_id,
                 name=name,
@@ -264,7 +282,7 @@ class GoogleSheetsService:
                 release_type=release_type,
                 init_system=init_system,
                 file_systems=file_systems,
-                rating=self._parse_rating(data.get("price (r$)", "")),
+                rating=_parse_float(data.get("rating", "")) or 0.0,
                 idle_ram_usage=idle_ram,
                 cpu_score=cpu_score,
                 io_score=io_score,

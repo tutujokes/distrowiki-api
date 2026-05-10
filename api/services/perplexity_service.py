@@ -119,11 +119,12 @@ async def enrich_distros_with_perplexity(
         fields: Lista de colunas da planilha para enriquecer. Se None, usa campos padrão.
     """
     if fields is None or len(fields) == 0:
+        # Default: apenas campos textuais/factuais (LLM é bom nisso)
+        # Performance (CPU, I/O, RAM) agora vem de static_performance_data.py
         fields = [
+            SheetColumn.DESCRIPTION,
             SheetColumn.DESKTOP,
-            SheetColumn.IDLE_RAM_USAGE,
-            SheetColumn.CPU_SCORE,
-            SheetColumn.IO_SCORE,
+            SheetColumn.CATEGORY,
             SheetColumn.REQUIREMENTS,
         ]
 
