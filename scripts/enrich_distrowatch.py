@@ -165,6 +165,7 @@ def get_static_results(distro_ids: list) -> list:
 async def main():
     parser = argparse.ArgumentParser(description="Enriquece dados via DistroWatch")
     parser.add_argument("--limit", type=int, help="Limita número de distros")
+    parser.add_argument("--distros", type=str, help="IDs das distros para scrapear, separados por vírgula (ex: alma,ubuntu)")
     parser.add_argument("--update-sheet", action="store_true", help="Atualiza Google Sheets")
     parser.add_argument("--dry-run", action="store_true", help="Apenas mostra o que seria feito")
     parser.add_argument("--use-static-data", action="store_true", help="Usa dados estáticos ao invés de scraping")
@@ -177,9 +178,14 @@ async def main():
     distro_ids = await get_all_distro_ids()
     logger.info(f"Encontradas {len(distro_ids)} distros")
     
+    if args.distros:
+        specific_distros = [d.strip() for d in args.distros.split(",")]
+        distro_ids = [d for d in distro_ids if d in specific_distros]
+        logger.info(f"Filtrando para {len(distro_ids)} distros específicas: {', '.join(distro_ids)}")
+
     if args.dry_run:
-        logger.info("Modo dry-run: mostrando primeiras 10 distros")
-        for did in distro_ids[:10]:
+        logger.info(f"Modo dry-run: mostrando primeiras {args.limit or 10} distros")
+        for did in distro_ids[:(args.limit or 10)]:
             print(f"  - {did}")
         return
     
